@@ -1,0 +1,36 @@
+{
+    "questions": [
+        {
+            "questionData": {
+                "question": "The expression $$\frac{22+20}{2}$$ is equal to",
+                "options": [
+                    "1",
+                    "4",
+                    "20",
+                    "21",
+                    "22"
+                ],
+                "diagram": null    
+            },
+
+            "solutionData": {
+                "correctOption": "21",
+                "explination": null,
+                "diagram": null
+            },
+
+            "details": {
+                "grade": "9",
+                "partType": "A",
+                "partNumber": "1",
+                "partSize": "10"
+            },
+
+            "hints": {
+                "hint1": null,
+                "hint1": null,
+                "hint1": null
+            }
+        }
+    ]
+}
