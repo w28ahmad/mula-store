@@ -14,8 +14,8 @@ CREATE DATABASE Mula;
 USE Mula;
 
 -- Create Question Options table
-DROP TABLE IF EXISTS QuestionOptions;
-CREATE TABLE QuestionOptions(
+DROP TABLE IF EXISTS question_options;
+CREATE TABLE question_options(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
@@ -27,8 +27,8 @@ CREATE TABLE QuestionOptions(
 );
 
 -- Create Question Solutions Table
-DROP TABLE IF EXISTS QuestionSolutions;
-CREATE TABLE QuestionSolutions(
+DROP TABLE IF EXISTS question_solutions;
+CREATE TABLE question_solutions(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
@@ -38,8 +38,8 @@ CREATE TABLE QuestionSolutions(
 );
 
 -- Create Details Table
-DROP TABLE IF EXISTS QuestionDetails;
-CREATE TABLE QuestionDetails(
+DROP TABLE IF EXISTS question_details;
+CREATE TABLE question_details(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
@@ -50,8 +50,8 @@ CREATE TABLE QuestionDetails(
 );
 
 -- Create Hints Table
-DROP TABLE IF EXISTS QuestionHints;
-CREATE TABLE QuestionHints(
+DROP TABLE IF EXISTS question_hints;
+CREATE TABLE question_hints(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
@@ -63,8 +63,8 @@ CREATE TABLE QuestionHints(
 
 
 -- Create Questions Table
-DROP TABLE IF EXISTS Questions;
-CREATE TABLE Questions(
+DROP TABLE IF EXISTS question;
+CREATE TABLE question(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
@@ -75,8 +75,8 @@ CREATE TABLE Questions(
     details_id INT UNIQUE,
     hints_id INT UNIQUE,
 
-    CONSTRAINT fk_options_id FOREIGN KEY (options_id) REFERENCES QuestionOptions(id),
-    CONSTRAINT fk_solution_id FOREIGN KEY (solution_id) REFERENCES QuestionSolutions(id),
-    CONSTRAINT fk_details_id FOREIGN KEY (details_id) REFERENCES QuestionDetails(id),
-    CONSTRAINT fk_hints_id FOREIGN KEY (hints_id) REFERENCES QuestionHints(id)
+    CONSTRAINT fk_options_id FOREIGN KEY (options_id) REFERENCES question_options(id),
+    CONSTRAINT fk_solution_id FOREIGN KEY (solution_id) REFERENCES question_solutions(id),
+    CONSTRAINT fk_details_id FOREIGN KEY (details_id) REFERENCES question_details(id),
+    CONSTRAINT fk_hints_id FOREIGN KEY (hints_id) REFERENCES question_hints(id)
 );

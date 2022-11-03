@@ -25,10 +25,10 @@
             },
 
             "hints": {
-                "hintOne": "null",
-                "hintTwo": "null",
-                "hintThree": "null",
-                "hintFour": "null"
+                "hintOne": "'null'",
+                "hintTwo": "'null'",
+                "hintThree": "'null'",
+                "hintFour": "'null'"
             }
         },
         {
@@ -56,10 +56,10 @@
             },
 
             "hints": {
-                "hintOne": "null",
-                "hintTwo": "null",
-                "hintThree": "null",
-                "hintFour": "null"
+                "hintOne": "'null'",
+                "hintTwo": "'null'",
+                "hintThree": "'null'",
+                "hintFour": "'null'"
             }
         }
     ]
