@@ -19,11 +19,11 @@ CREATE TABLE question_options(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP,
-    option_A VARCHAR(100),
-    option_B VARCHAR(100),
-    option_C VARCHAR(100),
-    option_D VARCHAR(100),
-    option_E VARCHAR(100)
+    option_a VARCHAR(100),
+    option_b VARCHAR(100),
+    option_c VARCHAR(100),
+    option_d VARCHAR(100),
+    option_e VARCHAR(100)
 );
 
 -- Create Question Solutions Table
@@ -34,7 +34,7 @@ CREATE TABLE question_solutions(
     deleted_at TIMESTAMP,
     correct_solution VARCHAR(100),
     diagram CHAR(255),
-    explination TEXT
+    explanation TEXT
 );
 
 -- Create Details Table

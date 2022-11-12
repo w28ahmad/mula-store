@@ -2,7 +2,7 @@
     "questions": [
         {
             "questionData": {
-                "question": "'The expression $$\\frac{22+20}{2}$$ is equal to'",
+                "question": "'The expression $$\\\\frac{22+20}{2}$$ is equal to'",
                 "optionA":"'1'",
                 "optionB":"'4'",
                 "optionC":"'20'",
@@ -25,10 +25,10 @@
             },
 
             "hints": {
-                "hintOne": "'null'",
-                "hintTwo": "'null'",
-                "hintThree": "'null'",
-                "hintFour": "'null'"
+                "hintOne": "null",
+                "hintTwo": "null",
+                "hintThree": "null",
+                "hintFour": "null"
             }
         },
         {
@@ -56,10 +56,10 @@
             },
 
             "hints": {
-                "hintOne": "'null'",
-                "hintTwo": "'null'",
-                "hintThree": "'null'",
-                "hintFour": "'null'"
+                "hintOne": "null",
+                "hintTwo": "null",
+                "hintThree": "null",
+                "hintFour": "null"
             }
         }
     ]
