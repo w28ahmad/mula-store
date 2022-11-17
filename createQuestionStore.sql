@@ -13,6 +13,17 @@ CREATE DATABASE Mula;
 
 USE Mula;
 
+
+-- Create Questions Table
+DROP TABLE IF EXISTS question;
+CREATE TABLE question(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP,
+    question_snippet TEXT,
+    diagram CHAR(255)
+) ENGINE=INNODB;
+
 -- Create Question Options table
 DROP TABLE IF EXISTS question_options;
 CREATE TABLE question_options(
@@ -23,8 +34,11 @@ CREATE TABLE question_options(
     option_b VARCHAR(100),
     option_c VARCHAR(100),
     option_d VARCHAR(100),
-    option_e VARCHAR(100)
-);
+    option_e VARCHAR(100),
+    question_id INT UNIQUE,
+
+    CONSTRAINT fk_option_question_id FOREIGN KEY (question_id) REFERENCES question(id)
+) ENGINE=INNODB;
 
 -- Create Question Solutions Table
 DROP TABLE IF EXISTS question_solutions;
@@ -34,8 +48,11 @@ CREATE TABLE question_solutions(
     deleted_at TIMESTAMP,
     correct_solution VARCHAR(100),
     diagram CHAR(255),
-    explanation TEXT
-);
+    explanation TEXT,
+    question_id INT UNIQUE,
+
+    CONSTRAINT fk_solution_question_id FOREIGN KEY (question_id) REFERENCES question(id)
+) ENGINE=INNODB;
 
 -- Create Details Table
 DROP TABLE IF EXISTS question_details;
@@ -46,8 +63,11 @@ CREATE TABLE question_details(
     grade INT,
     part_type CHAR(1),
     part_number INT,
-    part_size INT
-);
+    part_size INT,
+    question_id INT UNIQUE,
+
+    CONSTRAINT fk_details_question_id FOREIGN KEY (question_id) REFERENCES question(id)
+) ENGINE=INNODB;
 
 -- Create Hints Table
 DROP TABLE IF EXISTS question_hints;
@@ -58,25 +78,8 @@ CREATE TABLE question_hints(
     hint_one VARCHAR(100),
     hint_two VARCHAR(100),
     hint_three VARCHAR(100),
-    hint_four VARCHAR(100)
-);
+    hint_four VARCHAR(100),
+    question_id INT UNIQUE,
 
-
--- Create Questions Table
-DROP TABLE IF EXISTS question;
-CREATE TABLE question(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    deleted_at TIMESTAMP,
-    question_snippet TEXT,
-    diagram CHAR(255),
-    options_id INT UNIQUE,
-    solution_id INT UNIQUE,
-    details_id INT UNIQUE,
-    hints_id INT UNIQUE,
-
-    CONSTRAINT fk_options_id FOREIGN KEY (options_id) REFERENCES question_options(id),
-    CONSTRAINT fk_solution_id FOREIGN KEY (solution_id) REFERENCES question_solutions(id),
-    CONSTRAINT fk_details_id FOREIGN KEY (details_id) REFERENCES question_details(id),
-    CONSTRAINT fk_hints_id FOREIGN KEY (hints_id) REFERENCES question_hints(id)
-);
+    CONSTRAINT fk_hints_question_id FOREIGN KEY (question_id) REFERENCES question(id)
+) ENGINE=INNODB;

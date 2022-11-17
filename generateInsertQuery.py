@@ -21,11 +21,11 @@ with open(WRITEFILE, 'w') as f:
         solutionData = question['solutionData']
         hints = question['hints']
         
-        f.write(f"INSERT INTO question_options (id, option_a, option_b, option_c, option_d, option_e) VALUES({count}, {questionData['optionA']}, {questionData['optionB']}, {questionData['optionC']}, {questionData['optionD']}, {questionData['optionE']});\n")
-        f.write(f"INSERT INTO question_solutions (id, correct_solution, diagram, explanation) VALUES({count}, {solutionData['solution']}, {solutionData['diagram']}, {solutionData['explination']});\n")
-        f.write(f"INSERT INTO question_details (id, grade, part_type, part_number, part_size) VALUES({count}, {details['grade']}, {details['partType']}, {details['partNumber']}, {details['partSize']});\n")
-        f.write(f"INSERT INTO question_hints (id, hint_one, hint_two, hint_three, hint_four) VALUES({count}, {hints['hintOne']}, {hints['hintTwo']}, {hints['hintThree']}, {hints['hintFour']});\n")
-        f.write(f"INSERT INTO question (id, question_snippet, diagram, options_id, solution_id, details_id, hints_id) VALUES({count}, {questionData['question']}, {questionData['diagram']}, {count}, {count}, {count}, {count});\n\n")
+        f.write(f"INSERT INTO question (id, question_snippet, diagram) VALUES({count}, {questionData['question']}, {questionData['diagram']});\n\n")
+        f.write(f"INSERT INTO question_options (id, option_a, option_b, option_c, option_d, option_e, question_id) VALUES({count}, {questionData['optionA']}, {questionData['optionB']}, {questionData['optionC']}, {questionData['optionD']}, {questionData['optionE']}, {count});\n")
+        f.write(f"INSERT INTO question_solutions (id, correct_solution, diagram, explanation, question_id) VALUES({count}, {solutionData['solution']}, {solutionData['diagram']}, {solutionData['explination']}, {count});\n")
+        f.write(f"INSERT INTO question_details (id, grade, part_type, part_number, part_size, question_id) VALUES({count}, {details['grade']}, {details['partType']}, {details['partNumber']}, {details['partSize']}, {count});\n")
+        f.write(f"INSERT INTO question_hints (id, hint_one, hint_two, hint_three, hint_four, question_id) VALUES({count}, {hints['hintOne']}, {hints['hintTwo']}, {hints['hintThree']}, {hints['hintFour']}, {count});\n")
         
         count += 1
 
