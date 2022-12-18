@@ -64,6 +64,8 @@ CREATE TABLE question_details(
     part_type CHAR(1),
     part_number INT,
     part_size INT,
+    subject CHAR(100),
+    topic CHAR(100),
     question_id INT UNIQUE,
 
     CONSTRAINT fk_details_question_id FOREIGN KEY (question_id) REFERENCES question(id)
