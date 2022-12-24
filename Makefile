@@ -12,9 +12,10 @@ mysql-container-docker:
 # docker run -it --network bridge --rm mysql mysql -h $(MULA_MYSQL_IP) -u ${DB_USER} -p
 
 mysql-connect-rds:
-	mysql -h ${RDS_HOST} -u ${DB_USER} --password=${RDS_PASSWORD}
+	mysql -h ${RDS_HOST} -u ${RDS_USER} --password=${RDS_PASSWORD}
 
 mysql-rds-migrate:
-	./refresh.sh --prod
+	./copyDB.sh
+# ./refreshDB.sh --prod
 
 .PHONY: mysql-container-docker mysql-connect-rds
