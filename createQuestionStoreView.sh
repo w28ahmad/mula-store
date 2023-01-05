@@ -9,6 +9,9 @@ subject=math
 prefix=
 suffix=questions
 
+# Clear file
+echo '' > createQuestionStoreView.sql
+
 # Iterate over the grades and difficulties
 for grade in "${grades[@]}"; do
   for difficulty in "${difficulties[@]}"; do
@@ -26,16 +29,17 @@ for grade in "${grades[@]}"; do
 
     
     # Generate the SQL statement
-    statement="CREATE VIEW $view_name AS
-SELECT q.id AS question_id, q.question_snippet, qo.option_a, qo.option_b, qo.option_c, qo.option_d, qo.option_e,
-       qs.correct_solution, qs.explanation, qh.hint_one, qh.hint_two, qh.hint_three, qh.hint_four,
-       qd.grade, qd.part_type, qd.part_number, qd.part_size, qd.subject, qd.topic
-FROM question AS q
-JOIN question_options AS qo ON qo.question_id = q.id
-JOIN question_solutions AS qs ON qs.question_id = q.id
-JOIN question_hints AS qh ON qh.question_id = q.id
-JOIN question_details AS qd ON qd.question_id = q.id
-WHERE qd.subject = '$subject' AND qd.grade = $grade AND qd.part_type = '$part_type';\n\n"
+    statement="DROP VIEW IF EXISTS $view_name;
+        CREATE VIEW $view_name AS
+        SELECT q.id AS question_id, q.question_snippet, qo.option_a, qo.option_b, qo.option_c, qo.option_d, qo.option_e,
+            qs.correct_solution, qs.explanation, qh.hint_one, qh.hint_two, qh.hint_three, qh.hint_four,
+            qd.grade, qd.part_type, qd.part_number, qd.part_size, qd.subject, qd.topic
+        FROM question AS q
+        JOIN question_options AS qo ON qo.question_id = q.id
+        JOIN question_solutions AS qs ON qs.question_id = q.id
+        JOIN question_hints AS qh ON qh.question_id = q.id
+        JOIN question_details AS qd ON qd.question_id = q.id
+        WHERE qd.subject = '$subject' AND qd.grade = $grade AND qd.part_type = '$part_type';\n\n"
     
     # Print the SQL statement
     echo $statement >> createQuestionStoreView.sql
