@@ -71,6 +71,9 @@ CREATE TABLE question_details(
     CONSTRAINT fk_details_question_id FOREIGN KEY (question_id) REFERENCES question(id)
 ) ENGINE=INNODB;
 
+-- Important index
+CREATE INDEX grade_part_type_index ON question_details (grade, part_type);
+
 -- Create Hints Table
 DROP TABLE IF EXISTS question_hints;
 CREATE TABLE question_hints(

@@ -25,7 +25,8 @@ else
     elif [[ -z "${MYSQL_ROOT_PASSWORD}" ]]; then
         echo "[Error] MYSQL_ROOT_PASSWORD not set" 1>&2
     else
-        echo '[LOG] Creating DB'
+        echo '[LOG] Taking a snapshot'
+        
         # docker exec -i mula-mysql mysql --password=${MYSQL_ROOT_PASSWORD} --user=${DB_USER} < createQuestionStore.sql 2>&1
         mysql --password=${MYSQL_ROOT_PASSWORD} --user=${DB_USER} < createQuestionStore.sql 2>&1
         
